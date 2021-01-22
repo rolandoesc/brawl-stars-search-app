@@ -1,3 +1,20 @@
+@import url(//db.onlinewebfonts.com/c/08c965415bf06c986d8fe29a1e8ca8d8?family=SignorW01-UltraBlack);
+
+@font-face {
+  font-family: 'SignorW01-UltraBlack';
+  src: url('//db.onlinewebfonts.com/t/08c965415bf06c986d8fe29a1e8ca8d8.eot');
+  src: url('//db.onlinewebfonts.com/t/08c965415bf06c986d8fe29a1e8ca8d8.eot?#iefix')
+      format('embedded-opentype'),
+    url('//db.onlinewebfonts.com/t/08c965415bf06c986d8fe29a1e8ca8d8.woff2')
+      format('woff2'),
+    url('//db.onlinewebfonts.com/t/08c965415bf06c986d8fe29a1e8ca8d8.woff')
+      format('woff'),
+    url('//db.onlinewebfonts.com/t/08c965415bf06c986d8fe29a1e8ca8d8.ttf')
+      format('truetype'),
+    url('//db.onlinewebfonts.com/t/08c965415bf06c986d8fe29a1e8ca8d8.svg#SignorW01-UltraBlack')
+      format('svg');
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +52,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.title {
+  font-family: 'SignorW01-UltraBlack';
 }
