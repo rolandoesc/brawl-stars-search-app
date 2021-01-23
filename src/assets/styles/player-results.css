@@ -1,0 +1,9 @@
+.result-detail {
+  @apply flex-col py-2;
+}
+
+.result-detail > label {
+  @apply pb-1 uppercase;
+  font-family: 'Lilita One';
+  color: rgb(180, 180, 180);
+}

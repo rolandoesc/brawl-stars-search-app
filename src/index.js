@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import './index.css'
-import Index from './pages/index.jsx';
+import { BrowserRouter as Router } from "react-router-dom";
+import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ApiService from './services/api.services'
+console.log(process.env.NODE_ENV)
+ApiService.init();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Index />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,0 +1,50 @@
+.form {
+  @apply w-full max-w-sm;
+  font-family: 'Lilita One';
+}
+
+.form--label {
+  @apply uppercase text-white text-sm;
+}
+
+.form > .search__field {
+  @apply flex items-center rounded-sm bg-white relative shadow;
+  -webkit-transform: skewX(-10deg);
+  transform: skewX(-10deg);
+  box-shadow: #40474E;
+  border-color: #40474E;
+}
+
+.search--field__input {
+  @apply appearance-none bg-transparent border-none w-full mr-3 py-2 px-2 leading-tight uppercase;
+  -webkit-transform: skewX(10deg);
+  transform: skewX(10deg);
+}
+.search--field__input:hover {
+  @apply outline-none;
+}
+.search--field__input:focus, .search--field__button:focus {
+  @apply outline-none;
+}
+.search--field__button {
+  @apply flex-shrink-0 text-sm text-white py-2 px-4 rounded-sm h-full uppercase;
+  z-index: 2;
+  
+  
+}
+
+.search--field__button > span {
+  -webkit-transform: skewX(10deg);
+  transform: skewX(10deg);
+}
+
+.search__field > .search--field__shadow {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 3px;
+  opacity: 0.2;
+  background: #110111;
+  z-index: 0;
+}

@@ -1,5 +1,7 @@
 @import url(//db.onlinewebfonts.com/c/08c965415bf06c986d8fe29a1e8ca8d8?family=SignorW01-UltraBlack);
 
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
 @font-face {
   font-family: 'SignorW01-UltraBlack';
   src: url('//db.onlinewebfonts.com/t/08c965415bf06c986d8fe29a1e8ca8d8.eot');
@@ -14,6 +16,15 @@
     url('//db.onlinewebfonts.com/t/08c965415bf06c986d8fe29a1e8ca8d8.svg#SignorW01-UltraBlack')
       format('svg');
 }
+@import "./assets/styles/buttons.css";
+@import "./assets/styles/layouts.css";
+@import "./assets/styles/form.css";
+@import "./assets/styles/player-results.css";
+:root {
+  --primary-color : #0051b9;
+  --secondary-color : rgb(10, 115, 229);
+}
+
 
 .App {
   text-align: center;
@@ -55,5 +66,57 @@
 }
 
 .title {
-  font-family: 'SignorW01-UltraBlack';
+  font-family: 'Lilita One';
+  @apply text-3xl text-white;
+}
+/* .angled-element:before,
+.angled-element:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  transform-origin: left top;
+  transform: skewY(-3deg);
+} */
+
+.angled-element:after {
+  bottom: 0;
+  transform-origin: left bottom;
+  transform: skewY(3deg);
+}
+
+div.angled-element,
+button.angled-element {
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 1.5;
+  width: 50%;
+  background-color: #eee;
+  bottom: 0;
+  transform-origin: left bottom;
+  transform: skewX(-10deg);
+  border-radius: 2px;
+}
+
+.angle-element {
+  -webkit-transform: skewX(-10deg);
+  transform: skewX(-10deg);
+}
+
+.app__navigation {
+  background-color: #233A92;
+  transform: skewY(-0.5deg);
+  @apply w-full justify-around fixed flex h-24;
+  top: -0.5rem;
+}
+
+.app__navigation > .relative {
+  @apply absolute top-4;
+}
+
+.text-shadow {
+  text-shadow: 0 2.5px 1px black;
 }
