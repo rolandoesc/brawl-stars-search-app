@@ -24,9 +24,15 @@ const SearchInput = ({ slug }) => {
     // else searchBrawlChampeon(playerID)
   }
 
-  const searchPlayerByID = (playerID) => {
-    // getPlayerDetails(playerID)
-    history.push(`/player/${playerID}`)
+  const searchPlayerByID = async (playerID) => {
+    try {
+      const response = await getPlayerDetails(playerID)
+      console.log('%c This is the Response', 'color: orange; font-size: 18px', response)
+      history.push(`/player/${playerID}`)
+      
+    } catch (error) {
+      console.error(error)
+    }
   }
   const isDisabled = searchText.length !== 8
 
