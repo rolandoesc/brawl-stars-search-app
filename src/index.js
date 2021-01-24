@@ -6,7 +6,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ApiService from './services/api.services'
-console.log(process.env.NODE_ENV)
 ApiService.init();
 
 ReactDOM.render(

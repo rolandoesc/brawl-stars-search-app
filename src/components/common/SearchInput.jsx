@@ -11,24 +11,24 @@ const SearchInput = ({ slug }) => {
   const history = useHistory();
   useEffect(() => {
     if (slug) {
-      setSearchText(`#${slug}`)
+      setSearchText(`${slug}`)
     }
 
   }, [])
 
 
   const searchPlayer = () => {
-    if (!searchText.length) return;
-    if (searchText[0] === '#')
-      searchPlayerByID(searchText)
+    if (searchText.length !== 8) return;
+    else
+      searchPlayerByID(searchText.toUpperCase())
     // else searchBrawlChampeon(playerID)
   }
 
   const searchPlayerByID = (playerID) => {
     // getPlayerDetails(playerID)
-    history.push(`/player/${playerID.substring(1)}`)
+    history.push(`/player/${playerID}`)
   }
-  const isDisabled = !searchText.length
+  const isDisabled = searchText.length !== 8
 
 
 
@@ -36,7 +36,7 @@ const SearchInput = ({ slug }) => {
     <label className="form--label text-shadow">Type your ID to see details</label>
     <div className="search__field">
       <div className="search--field__shadow"></div>
-      <BSTextInput placeholder="#9U2PCULR" value={searchText}
+      <BSTextInput placeholder="9U2PCULR" value={searchText}
         setInputText={({ target: { value } }) => setSearchText(value)}
       />
       <BSButton text="Enter" type="button" disabled={isDisabled}
