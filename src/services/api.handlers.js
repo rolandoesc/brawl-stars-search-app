@@ -1,10 +1,9 @@
 import { BrawlStarsService } from './api.services'
 
 async function getPlayerDetails(playerID) {
-  console.log(playerID)
   try {
-    const response = await BrawlStarsService.getPlayerByID(playerID)
-    console.log(response)
+    const { data } = await BrawlStarsService.getPlayerByID(playerID)
+    return data
   } catch (error) {
     console.error(error)
   }

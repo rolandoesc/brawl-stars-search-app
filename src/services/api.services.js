@@ -1,11 +1,8 @@
 import axios from 'axios';
-const token = `Bearer ${process.env.REACT_APP_API_TOKEN}`
-const API_URL = 'https://api.brawlstars.com/v1/'
-console.log(process.env.REACT_APP_API_TOKEN)
+const API_URL = 'https://statscell.herokuapp.com/api/brawl/'
 const ApiService = {
   init() {
     axios.defaults.baseURL = API_URL;
-
     axios.interceptors.response.use(
       response => response,
       error => Promise.reject({ ...error })
@@ -14,20 +11,17 @@ const ApiService = {
 
   },
   setHeaders() {
-		if (token) {
-			axios.interceptors.request.use(
-				config => {
-					config.headers["Authorization"] = token;
-					return config;
-				},
-				error => {
-					return Promise.reject(error);
-				}
-			);
-		} else {
-			axios.defaults.headers["Authorization"] = "";
-		}
-	},
+    axios.interceptors.request.use(
+      config => {
+        config.headers["Accept"] = "application/json";
+        return config;
+      },
+      error => {
+        return Promise.reject(error);
+      }
+    );
+
+  },
 
   query(resource, params = []) {
     let query_elements = '';
@@ -38,7 +32,6 @@ const ApiService = {
   },
 
   get(resource, slug = "") {
-    console.log(resource  )
     return axios.get(`${resource}${slug ? `?${slug}` : ''}`)
   },
 
@@ -65,7 +58,7 @@ const ApiService = {
 
 export const BrawlStarsService = {
   getPlayerByID(playerID) {
-    return ApiService.get(`players/#${playerID}`)
+    return ApiService.get(`players/${playerID}`)
   }
 }
 

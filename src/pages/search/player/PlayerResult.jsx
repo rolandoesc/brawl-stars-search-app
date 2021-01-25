@@ -1,14 +1,17 @@
 
-import { BrowserRouter as Router, Switch, Route, Link, useParams, useLocation, useRouteMatch } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DefaultLayout from "../../../layouts/default"
 import SearchInput from "../../../components/common/SearchInput"
-import myJSON from '../../../assets/dummy.json'
-import styled from 'styled-components'
 import InfoText from '../../../components/common/InfoHolder'
-import PlayerBrawlersList from "./brawlers/PlayerBrawlers";
 import PlayerName from '../../../components/common/PlayerNameStyled'
-const PlayerResult = () => {
-  const Player = { ...myJSON }
+import { useContext } from "react";
+import PlayerContext from "../../../context/player-context";
+import LoadingView from "../../../components/common/LoadingView";
+
+
+
+const PlayerResult = ({ details }) => {
+  
   const keysList = {
     "trophies": "Trophies",
     "highestTrophies": "Highest Trophies",
@@ -24,7 +27,7 @@ const PlayerResult = () => {
   }
   const InfoDetail = ({ currentKey }) => {
     const { playerID } = useParams();
-    let detail = Player[currentKey]
+    let detail = details[currentKey]
     if (currentKey === 'club')
       detail = detail.name
     else if (currentKey === 'brawlers') {
@@ -47,7 +50,7 @@ const PlayerResult = () => {
 
 
   return (<div className="my-2">
-    <PlayerName color={Player.nameColor} name={Player.name} />
+    <PlayerName color={details.nameColor} name={details.name} />
     <div className="grid grid-cols-3 gap-4">
       {ResultsDetails}
     </div>
@@ -57,6 +60,7 @@ const PlayerResult = () => {
 
 const ResultPageView = () => {
   const { playerID } = useParams();
+  const { playerDetails: Player, setPlayerDetails } = useContext(PlayerContext)
   const View = (
 
     <div className="flex justify-center">
@@ -64,9 +68,11 @@ const ResultPageView = () => {
         <div className="flex justify-center pb-4">
           <SearchInput slug={playerID} />
         </div>
-        <p className="title uppercase text-shadow">Results For Player ID "#{playerID}"</p>
+        {Object.keys(Player).length ? (
+          <>
+            <p className="title uppercase text-shadow">Results For Player ID "#{playerID}"</p>
 
-        <PlayerResult />
+            <PlayerResult details={Player} /></>) : <LoadingView/>}
 
       </div>
     </div>

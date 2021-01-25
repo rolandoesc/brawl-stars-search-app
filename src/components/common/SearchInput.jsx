@@ -1,40 +1,34 @@
-import { useState, useEffect } from "react"
-import getPlayerDetails from "../../services/api.handlers";
+import { useState, useEffect, useContext } from "react"
 import BSButton from "./BSButton"
 import BSTextInput from "./BSTextInput"
+import PlayerContext from "../../context/player-context"
 import React from "react";
 import {
-  useHistory
+  useHistory, useRouteMatch
 } from "react-router-dom";
+import { searchPlayerByID } from "../../assets/utils/search-player";
 const SearchInput = ({ slug }) => {
-  const [searchText, setSearchText] = useState('');
-  const history = useHistory();
-  useEffect(() => {
-    if (slug) {
-      setSearchText(`${slug}`)
-    }
 
-  }, [])
+  const player = useContext(PlayerContext);
+  const [searchText, setSearchText] = useState('');
+  const { url } = useRouteMatch();
+  const history = useHistory();
+  // useEffect(() => {
+  //   if (slug) {
+  //     setSearchText(`${slug}`);
+  //     searchPlayerByID(slug, url, history, PlayerContext);
+  //   }
+
+  // }, [])
 
 
   const searchPlayer = () => {
-    if (searchText.length !== 8) return;
+    if (searchText.length < 6) return;
     else
-      searchPlayerByID(searchText.toUpperCase())
+      searchPlayerByID(searchText.toUpperCase(), url, history, player)
     // else searchBrawlChampeon(playerID)
   }
-
-  const searchPlayerByID = async (playerID) => {
-    try {
-      const response = await getPlayerDetails(playerID)
-      console.log('%c This is the Response', 'color: orange; font-size: 18px', response)
-      history.push(`/player/${playerID}`)
-      
-    } catch (error) {
-      console.error(error)
-    }
-  }
-  const isDisabled = searchText.length !== 8
+  const isDisabled = searchText.length < 6
 
 
 

@@ -1,17 +1,22 @@
 import { BrowserRouter as Router, Switch, Route, Link, useLocation } from "react-router-dom";
 import Homepage from './pages/Homepage'
 import ResultPageView from './pages/search/player/PlayerResult'
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import PlayerBrawlersList from "./pages/search/player/brawlers/PlayerBrawlers";
+import PlayerContext from "./context/player-context";
 
 function App() {
+  const [playerDetails, setPlayerDetails] = useState({})
+  const value = { playerDetails, setPlayerDetails }
   return (
-    <Switch>
-      <Route path="/" exact component={Homepage} />
-      <Route exact path="/player/:playerID" component={ResultPageView} />
-      <Route exact path="/player/:playerID/brawlers" component={PlayerBrawlersList} />
-    </Switch>
+    <PlayerContext.Provider value={value}>
+      <Switch>
+        <Route path="/" exact component={Homepage} />
+        <Route exact path="/player/:playerID" component={ResultPageView} />
+        <Route exact path="/player/:playerID/brawlers" component={PlayerBrawlersList} />
+      </Switch>
+    </PlayerContext.Provider>
   );
 }
 
