@@ -20,6 +20,7 @@
 @import "./assets/styles/layouts.css";
 @import "./assets/styles/form.css";
 @import "./assets/styles/player-results.css";
+@import "./assets/styles/errors.css";
 :root {
   --primary-color : #0051b9;
   --secondary-color : rgb(10, 115, 229);
@@ -119,4 +120,17 @@ button.angled-element {
 
 .text-shadow {
   text-shadow: 0 2.5px 1px black;
+}
+
+.main--holder {
+  @apply flex justify-center;
+}
+
+@screen xs {
+  .main--holder {
+    @apply mx-auto;
+  }
+  .main--holder > div > p.title {
+    @apply text-2xl text-center;
+  }
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useContext } from "react"
 import BSButton from "./BSButton"
 import BSTextInput from "./BSTextInput"
 import PlayerContext from "../../context/player-context"
@@ -13,20 +13,11 @@ const SearchInput = ({ slug }) => {
   const [searchText, setSearchText] = useState('');
   const { url } = useRouteMatch();
   const history = useHistory();
-  // useEffect(() => {
-  //   if (slug) {
-  //     setSearchText(`${slug}`);
-  //     searchPlayerByID(slug, url, history, PlayerContext);
-  //   }
-
-  // }, [])
-
 
   const searchPlayer = () => {
     if (searchText.length < 6) return;
     else
       searchPlayerByID(searchText.toUpperCase(), url, history, player)
-    // else searchBrawlChampeon(playerID)
   }
   const isDisabled = searchText.length < 6
 

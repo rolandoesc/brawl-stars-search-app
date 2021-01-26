@@ -34,3 +34,9 @@
   @apply w-full flex flex-col justify-center h-full align-top;
   z-index: 1;
 }
+
+@screen xs {
+  .layout__view {
+    @apply w-4/5 mx-auto;
+  }
+}

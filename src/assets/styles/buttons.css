@@ -32,8 +32,8 @@
   text-transform: uppercase;
   vertical-align: middle;
   z-index: 1;
-  -webkit-transform: skewX(10deg);
-  transform: skewX(10deg);
+  -webkit-transform: skewX(0deg);
+  transform: skewX(0deg);
 }
 
 .button__holder > div.button__bg {

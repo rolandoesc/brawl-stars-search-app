@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import './App.css';
 import PlayerBrawlersList from "./pages/search/player/brawlers/PlayerBrawlers";
 import PlayerContext from "./context/player-context";
+import NotFound from "./components/common/errors/NotFound";
 
 function App() {
   const [playerDetails, setPlayerDetails] = useState({})
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" exact component={Homepage} />
         <Route exact path="/player/:playerID" component={ResultPageView} />
         <Route exact path="/player/:playerID/brawlers" component={PlayerBrawlersList} />
+        <Route exact path="/error/404" component={NotFound} />
       </Switch>
     </PlayerContext.Provider>
   );

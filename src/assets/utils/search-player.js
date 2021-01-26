@@ -2,12 +2,12 @@ import getPlayerDetails from "../../services/api.handlers"
 
 export const searchPlayerByID = async (playerID, url, history, PlayerContext) => {
   try {
-    const response = await getPlayerDetails(playerID)
-    PlayerContext.setPlayerDetails(response)
+    const { data, status } = await getPlayerDetails(playerID)
+    PlayerContext.setPlayerDetails(data)
     if (url !== `/player/${playerID}`)
       history.push(`/player/${playerID}`)
 
-  } catch (error) {
-    console.error(error)
+  } catch ({ response: { status }}) {
+      history.push('/error/404')
   }
 } 

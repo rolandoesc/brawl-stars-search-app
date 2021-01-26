@@ -48,3 +48,9 @@
   background: #110111;
   z-index: 0;
 }
+
+@screen xs { 
+  .form {
+    @apply mt-2;
+  }
+}

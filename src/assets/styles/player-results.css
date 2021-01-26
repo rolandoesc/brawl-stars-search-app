@@ -5,5 +5,49 @@
 .result-detail > label {
   @apply pb-1 uppercase;
   font-family: 'Lilita One';
-  color: rgb(180, 180, 180);
+  color: #fafafa;
+}
+
+.result-page__holder {
+  @apply flex justify-center;
+}
+
+.result-page--holder__alignment {
+  @apply flex flex-col mx-auto justify-center;
+}
+
+.result-details__list {
+  @apply grid grid-cols-3 gap-4;
+}
+.brawlers__list {
+  @apply mx-auto grid grid-cols-3 gap-4 max-h-80 overflow-y-auto overflow-x-hidden;
+}
+.brawlers-list__holder {
+  @apply grid-rows-3 gap-4 my-2 w-1/2 ml-auto;
+}
+
+.section__link > div {
+  background: rgb(2,0,36);
+background: linear-gradient(212deg, rgba(2,0,36,1) 0%, rgba(10,115,229,1) 55%, rgba(0,212,255,1) 100%);
+  box-shadow: 0 1px 1px black;
+  
+
+}
+
+@screen xs {
+  .result-details__holder {
+    @apply max-h-80 overflow-y-auto overflow-x-hidden;
+  }
+  .result-detail {
+    @apply text-sm;
+  }
+  .result-details__list {
+    @apply grid-cols-2 gap-3;
+  }
+  .brawlers-list__holder {
+    @apply grid-rows-1;
+  }
+  .brawlers__list {
+    @apply grid-cols-1 mx-0 max-h-80 px-2;
+  }
 }

@@ -10,6 +10,7 @@ import LoadingView from "../../../components/common/LoadingView";
 
 
 
+
 const PlayerResult = ({ details }) => {
   
   const keysList = {
@@ -33,12 +34,13 @@ const PlayerResult = ({ details }) => {
     else if (currentKey === 'brawlers') {
       detail = detail.length
       const URL = `/player/${playerID}/brawlers`
-      return (<Link to={URL}>
+      return (<Link to={URL} className="section__link">
         <InfoText text={detail} />
       </Link>)
     }
     return <InfoText text={detail} />
-  }
+  };
+
   const ResultsDetails = Object.keys(keysList).map((el, index) => {
     return (
       <div className="result-detail" key={el}>
@@ -46,12 +48,12 @@ const PlayerResult = ({ details }) => {
         <InfoDetail currentKey={el} />
       </div>
     )
-  })
+  });
 
 
   return (<div className="my-2">
     <PlayerName color={details.nameColor} name={details.name} />
-    <div className="grid grid-cols-3 gap-4">
+    <div className="result-details__list">
       {ResultsDetails}
     </div>
   </div>
@@ -63,16 +65,16 @@ const ResultPageView = () => {
   const { playerDetails: Player, setPlayerDetails } = useContext(PlayerContext)
   const View = (
 
-    <div className="flex justify-center">
-      <div className="flex flex-col mx-auto justify-center">
+    <div className="result-page__holder">
+      <div className="result-page--holder__alignment">
         <div className="flex justify-center pb-4">
           <SearchInput slug={playerID} />
         </div>
         {Object.keys(Player).length ? (
-          <>
+          <div className="result-details__holder">
             <p className="title uppercase text-shadow">Results For Player ID "#{playerID}"</p>
 
-            <PlayerResult details={Player} /></>) : <LoadingView/>}
+            <PlayerResult details={Player} /></div>) : <LoadingView/>}
 
       </div>
     </div>

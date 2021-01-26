@@ -1,0 +1,13 @@
+.not-found__view {
+  @apply flex text-center justify-center flex-col;
+}
+
+.error__text {
+  @apply mb-2;
+}
+
+@screen xs {
+  .error__text {
+    @apply text-2xl;
+  }
+}

@@ -35,7 +35,7 @@ top: 0;
 left: 0;
 `
 
-const BrawlerDetailsHolder = ({ power, rank, trophies }) => (<div className="grid-rows-3 gap-4 my-2 w-1/2 ml-auto">
+const BrawlerDetailsHolder = ({ power, rank, trophies }) => (<div className="brawlers-list__holder">
   <div>
     <BrawlerInfoText>Power: {power}</BrawlerInfoText>
   </div>
