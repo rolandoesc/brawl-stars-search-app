@@ -1,8 +1,13 @@
 import axios from 'axios';
-const API_URL = 'https://statscell.herokuapp.com/api/brawl/'
+const API_URL = 'https://api.brawlstars.com/v1/';
+const TOKEN = process.env.REACT_APP_BS_TOKEN;
+
 const ApiService = {
   init() {
+    console.log(axios, axios.defaults)
     axios.defaults.baseURL = API_URL;
+    axios.defaults.headers["Accept"] = "application/json";
+    axios.defaults.headers["Authorization"] = `Bearer ${TOKEN}`;
     axios.interceptors.response.use(
       response => response,
       error => Promise.reject({ ...error })
@@ -14,6 +19,7 @@ const ApiService = {
     axios.interceptors.request.use(
       config => {
         config.headers["Accept"] = "application/json";
+        config.headers["Authorization"] = `Bearer ${TOKEN}`;
         return config;
       },
       error => {
@@ -58,7 +64,8 @@ const ApiService = {
 
 export const BrawlStarsService = {
   getPlayerByID(playerID) {
-    return ApiService.get(`players/${playerID}`)
+
+    return ApiService.get(`players/#${playerID}`);
   }
 }
 

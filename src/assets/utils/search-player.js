@@ -7,7 +7,9 @@ export const searchPlayerByID = async (playerID, url, history, PlayerContext) =>
     if (url !== `/player/${playerID}`)
       history.push(`/player/${playerID}`)
 
-  } catch ({ response: { status }}) {
+  } catch (error) {
+    // { response: { status }}
+    console.error(error);
       history.push('/error/404')
   }
 } 
